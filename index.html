@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Evermore</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Evermore</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://github.com/aag-bitirme-projesi">Github</a></li>
+            <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Demo</a></li>
+            <li><a href="#">Poster</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <section>
+        <img src="assets/stars-2.png" id="stars" alt="">
+        <img src="assets/moon.png" id="moon" alt="">
+        <!-- <h2 id="text">Evermore</h2> -->
+        <img src="assets/taylor.png" id="taylor" alt="">
+    </section>
+
+    <div class="sec" id="about">
+        <h2>About</h2>
+        <p>
+            The field of machine learning (ML) has seen exponential growth, becoming a vital tool across various industries. 
+            Despite its potential, barriers such as the complexity of ML algorithms and the need for extensive technical 
+            knowledge limit its accessibility. To address these challenges, we developed a Machine Learning as a Service 
+            (MLaaS) web application designed to democratize access to ML tools and streamline workflows for both beginners 
+            and experienced users.
+            <br><br>
+            The main problem our project addresses is the high barrier to entry and the fragmented workflow in machine learning. 
+            Beginners struggle with the complexity of ML concepts and tools, while experienced users face challenges in 
+            efficiently developing, deploying, and sharing ML models. There is a need for an integrated platform that provides 
+            automated tools, interactive environments, and a marketplace for models and datasets, encouraging a collaborative and 
+            educational ML ecosystem.
+            <br><br>
+            Our proposed solution is an MLaaS web application built using a microservices architecture. Spring Boot and Flask 
+            used for backend development. React framework used for frontend development. AWS is used for cloud infrastructure. 
+            Users upload datasets to AWS S3 and AWS RDS used for PostgreSQL instance. Users develop and train models using 
+            frameworks like PyTorch, TensorFlow, Scikit-Learn within Docker containers, ensuring reproducibility. Machine Learning 
+            models run in separate Docker containers, providing flexibility for model development and deployment. The platform 
+            supports various ML algorithms. Users can buy and sell models and datasets, promoting a collaborative and incentivized 
+            environment. Payment managed through Stripe for seamless transactions. 
+            <br><br>
+            Our MLaaS web application is set to revolutionize how machine learning is accessed and utilized. In education, it 
+            will make learning ML concepts easier and more engaging by providing accessible tools and interactive environments, 
+            helping both students and educators. For businesses and industries, the platform will streamline ML workflows, reduce 
+            development time, and integrate ML solutions seamlessly into various applications, driving innovation and efficiency. 
+            In the research community, it will facilitate collaboration by allowing researchers to share and access high-quality 
+            models and datasets, thus contributing to advancements in the field. Overall, the platform will lower the barriers to 
+            entry and create new opportunities for learning and innovation in machine learning.
+            <br><br>
+            Looking ahead, we plan to continuously improve the platform based on user feedback, ensuring it meets evolving needs 
+            and expectations. We aim to form partnerships with educational institutions and industry leaders to expand our user 
+            base and enhance the platform's resources. Additionally, we will focus on implementing advanced features such as 
+            automated model retraining and support for more machine learning frameworks to keep the platform at the cutting edge 
+            of technology. Expanding the marketplace with a wider variety of high-quality models and datasets will further enhance 
+            its value, fostering a more vibrant and collaborative community. These steps will help us maintain the platform's 
+            growth and impact in the future.
+            
+        </p>
+    </div>
+
+    <div class="sec" id="contact">
+        <h2>Contact</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="name">Ataberk Asar</div>
+                <div class="task">Developer</div>
+                <div class="media">
+                    <a href="https://www.linkedin.com/in/ataberkasar/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ataberkasar"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="name">Ayça Akyol</div>
+                <div class="task">Developer</div>
+                <div class="media">
+                    <a href="https://www.linkedin.com/in/aycaakyol/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/aycaakyol"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="name">Gamze Ergin</div>
+                <div class="task">Developer</div>
+                <div class="media">
+                    <a href="https://www.linkedin.com/in/gamze-ergin-324156208/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/gamze80"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let stars = document.getElementById('stars');
+        let taylor = document.getElementById('taylor');
+        let header = document.querySelector('header');
+
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            taylor.style.top = - value * 1.01 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        })
+
+        let floatingSpeed = 0.001; // Adjust this value to control the speed of the floating effect
+        let floatingAmplitude = 40; // Adjust this value to control the amplitude of the floating effect
+        let startTime = Date.now();
+
+        function floatTaylor() {
+            let currentTime = Date.now();
+            let elapsedTime = currentTime - startTime;
+            let offset = Math.sin(elapsedTime * floatingSpeed) * floatingAmplitude;
+            taylor.style.transform = `translateY(${offset}px)`;
+            requestAnimationFrame(floatTaylor);
+        }
+
+        let rotationSpeed = 0.01; // Adjust this value to control the speed of the rotation
+        let angle = 0;
+
+        function rotateStars() {
+            angle += rotationSpeed;
+            stars.style.transform = `rotate(${angle}deg)`;
+            requestAnimationFrame(rotateStars);
+        }
+
+        
+        floatTaylor();
+        rotateStars();
+
+    </script>
+
+</body>
+</html>
